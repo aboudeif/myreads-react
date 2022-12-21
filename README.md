@@ -3,7 +3,7 @@
  <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center">MyReads Project</h3>
 
 <div align="center">
 
@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> A bookshelf app that allows user to select and categorize books user have read, are currently reading, or want to read.
     <br> 
 </p>
 
@@ -24,91 +24,102 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
+- [Backend Server](#backend_server)
 - [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
+- [Create React App](#createreactapp)
+- [Contributing](#contributing)
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this app is to allows user to select and categorize books user have read, are currently reading, or want to read. The project emphasizes using React to build the application and provides an API server and client library that user will use to persist information as he/she interact with the application.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+To get started developing right away:
 
-What things you need to install the software and how to install them.
+- install all project dependencies with `npm install`
+- start the development server with `npm start`
 
-```
-Give examples
-```
+### Backend Server <a name = "backend_server"></a>
 
-### Installing
+To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](starter/src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
-A step by step series of examples that tell you how to get a development env running.
+- [`getAll`](#getall)
+- [`update`](#update)
+- [`search`](#search)
 
-Say what the step will be
+### ### `getAll`
 
-```
-Give the example
-```
+Method Signature:
 
-And repeat
-
-```
-until finished
+```js
+getAll();
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+- Returns a Promise which resolves to a JSON object containing a collection of book objects.
+- This collection represents the books currently in the bookshelves in your app.
 
-## 🔧 Running the tests <a name = "tests"></a>
+### `update`
 
-Explain how to run the automated tests for this system.
+Method Signature:
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+```js
+update(book, shelf);
 ```
 
-### And coding style tests
+- book: `<Object>` containing at minimum an `id` attribute
+- shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]
+- Returns a Promise which resolves to a JSON object containing the response data of the POST request
 
-Explain what these tests test and why
+### `search`
 
+Method Signature:
+
+```js
+search(query);
 ```
-Give an example
-```
+
+- query: `<String>`
+- Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
+- These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
+
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+To use the application navigate to 
+```
+http://localhost:3000
+```
+and find your reading shelves
 
-## 🚀 Deployment <a name = "deployment"></a>
+[![home](screenshots\screencapture-localhost-3000-2022-12-21-18_23_26.png)]()
 
-Add additional notes about how to deploy this on a live system.
+you can move books between shelves
 
-## ⛏️ Built Using <a name = "built_using"></a>
+[![move](screenshots\Screenshot-2022-12-21-182426.png)]()
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+or you can add new books by clicking add-book button and search for books
 
-## ✍️ Authors <a name = "authors"></a>
+[![search](screenshots\Screenshot-2022-12-21-182509.png)]()
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+finally you could add any book using embeded controller
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+[![add](screenshots\Screenshot-2022-12-21-182545.png)]()
+
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
+
+## Create React App <a name = "createreactapp"></a>
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebook/create-react-app/blob/main/packages/cra-template/template/README.md).
+
+## ✍️ Contributing <a name = "contributing"></a>
+
+This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+
+For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
