@@ -1,10 +1,7 @@
-import React from 'react'
-import BookShelfChanger from './BookShelfChanger'
 
-
-const Book = ({ cover, title, authors, shelfs, selectedShelf, id }) => {
+const Book = (props) => {
   return (
-    
+    <li>
     <div className="book">
       <div className="book-top">
         <div
@@ -12,16 +9,29 @@ const Book = ({ cover, title, authors, shelfs, selectedShelf, id }) => {
           style={{
             width: 128,
             height: 193,
-            backgroundImage:
-              `url(${cover || ''})`,
+            backgroundImage: `url(${
+              props.book.imageLinks?.thumbnail || ""
+            })`,
           }}
         ></div>
-        <BookShelfChanger key={id+'-controller'} id={id} shelfs={shelfs} selectedShelf={selectedShelf} />
+        <div className="book-shelf-changer">
+        <select defaultValue={props.showShelf || "none"} onChange={e => props.handelShelfChange(props.book,e.target.value)}> 
+          <option value="title" disabled>
+            Move to...
+          </option>
+        {props.showShelfs?.length > 0 ?
+        props.showShelfs.map((shelf) => (
+          <option key={props.book.id+'-'+shelf} value={shelf} >{shelf}</option>
+        )) : null}
+          <option value="none">None</option>
+        </select>
       </div>
-      <div className="book-title">{title}</div>
-      <div className="book-authors">{authors}</div>
+      </div>
+      <div className="book-title">{props.book.title}</div>
+      <div className="book-authors">{props.book.authors}</div>
     </div>
-  )
-}
+    </li>
+  );
+};
 
-export default Book
+export default Book;
