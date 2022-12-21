@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 
 const Search = ({ books, showShelves, handelShelfChange, handelSearch }) => {
 
+  // handle search input
   const onSearch = (e) => {
     setTimeout(() => {
-      const query = e.target.value.replace(/[^a-zA-Z0-9 ]/g, '').trim(' ')
+      const query = e.target.value.replace(/[^a-zA-Z0-9] /g, '').split(' ');
       handelSearch(...query);
     }, 500);
   };
@@ -30,6 +31,7 @@ const Search = ({ books, showShelves, handelShelfChange, handelSearch }) => {
     </div>
     <div className="search-books-results">
       <ol className="books-grid">
+         {/* check if books array is not empty */}
         { books?.length > 0 ?
         books?.map((book) => (
           
