@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="[https://i.imgur.com/6wj0hh6.jpg](https://github.com/aboudeif/myreads-react/blob/main/screenshots/Screenshot%202022-12-21%20185814.png)" alt="Project logo"></a>
 </p>
 
 <h3 align="center">MyReads Project</h3>
@@ -107,7 +107,7 @@ or you can add new books by clicking add-book button and search for books
 
 finally you could add any book using embeded controller
 
-[![add](screenshots\Screenshot-2022-12-21-182545.png)]()
+[![add](screenshots/Screenshot-2022-12-21-182545.png)]()
 
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
