@@ -26,21 +26,14 @@ function App() {
 
   useEffect(() => {
     if(!bookShelf.book) return; 
-    (async () => {
-    const newShelves = await update(bookShelf.book, bookShelf.shelf);
-    console.log(newShelves);
-    setBooks((previousBooks) => 
-    previousBooks.filter((book) => 
-    book.shelf = Object.keys(newShelves).filter((newShelf) => newShelf.includes(book.id)).key|| book.shelf
-    ).map(book => book))
-    })();
+    
+    update(bookShelf.book, bookShelf.shelf);
+    const movedBook = bookShelf.book;
+    movedBook.shelf = bookShelf.shelf;
+    setBooks(prev => prev.filter(book => book.id !== movedBook.id).concat(movedBook));
+    
   }, [bookShelf]);
-  //     newShelf =>
-  //     books
-  //   )
-  //   //.then(newShelves => setBooks((prev,newShelves) => prev?.map(book => newShelves.map(newShelf => book.shelf = newShelf?.includes(book.id) ? newShelf : book.shelf))))
-  // }, [bookShelf]);
-
+ 
   useEffect(() => {
     return setTimeout(() => {
       if (!query) return setSearchResult([]);
@@ -72,8 +65,7 @@ function App() {
         element={(
           
           <>
-          {books?.length > 0 ?
-            <>
+          
             <div className="list-books">
               <div className="list-books-title">
                 <h1>MyReads</h1>
@@ -94,10 +86,9 @@ function App() {
             <Link key={'search'} to={"/search"} className="add-button">
               Add a book
             </Link>
-          </> : <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading" className="img-loading" />
-          }</>
+          </>
           
-              )}
+          )}
       />
     </Routes>
   );
