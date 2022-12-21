@@ -9,16 +9,16 @@ const BookShelfChanger = (props) => {
         onChange={(e) => props.handelShelfChange(props.book, e.target.value)}
       >
         <option value="title" disabled>
-          Move to...
+          {" = Move to..."}
         </option>
         {props.showShelves?.length > 0
           ? props.showShelves.map((shelf) => (
               <option key={props.book.id + "-" + shelf} value={shelf}>
-                {shelf}
+                {(shelf === props.book.shelf ? "✓ " : "   ") + shelf}
               </option>
             ))
           : null}
-        <option value="none">None</option>
+        <option value="none">{(props.book.shelf === "none" ? "✓ " : "   ") +"none"}</option>
       </select>
     </div>
   );
