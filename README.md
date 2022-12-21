@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="[https://i.imgur.com/6wj0hh6.jpg](https://github.com/aboudeif/myreads-react/blob/main/screenshots/Screenshot%202022-12-21%20185814.png)" alt="Project logo"></a>
+ <img width=200px height=200px src="https://github.com/aboudeif/myreads-react/blob/main/screenshots/Screenshot%202022-12-21%20185814.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">MyReads Project</h3>
