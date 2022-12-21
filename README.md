@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=300px height=100px src="https://github.com/aboudeif/myreads-react/blob/main/screenshots/Screenshot%202022-12-21%20185814.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">MyReads Project</h3>
@@ -95,19 +95,19 @@ http://localhost:3000
 ```
 and find your reading shelves
 
-[![home](screenshots\screencapture-localhost-3000-2022-12-21-18_23_26.png)]()
+[![home](screenshots/screencapture-localhost-3000-2022-12-21-18_23_26.png)]()
 
 you can move books between shelves
 
-[![move](screenshots\Screenshot-2022-12-21-182426.png)]()
+[![move](screenshots/Screenshot-2022-12-21-182426.png)]()
 
 or you can add new books by clicking add-book button and search for books
 
-[![search](screenshots\Screenshot-2022-12-21-182509.png)]()
+[![search](screenshots/Screenshot-2022-12-21-182509.png)]()
 
 finally you could add any book using embeded controller
 
-[![add](screenshots\Screenshot-2022-12-21-182545.png)]()
+[![add](screenshots/Screenshot-2022-12-21-182545.png)]()
 
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
