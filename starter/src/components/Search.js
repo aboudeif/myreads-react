@@ -2,7 +2,16 @@ import React from 'react'
 import Book from './Book'
 import { Link } from 'react-router-dom'
 
-const Search = ({ books, showShelfs, handelShelfChange, handelSearch }) => {
+const Search = ({ books, showShelves, handelShelfChange, handelSearch }) => {
+
+  const onSearch = (e) => {
+    setTimeout(() => {
+      const query = e.target.value.replace(/[^a-zA-Z0-9 ]/g, '').trim(' ')
+      handelSearch(...query);
+    }, 500);
+  };
+
+
   return (
     <>
     <div className="search-books-bar">
@@ -12,7 +21,10 @@ const Search = ({ books, showShelfs, handelShelfChange, handelSearch }) => {
           <input
             type="text"
             placeholder="Search by title, author, or ISBN"
-            onChange={(e) => handelSearch(e.target.value)}
+            onChange={(e) => {
+              clearTimeout(onSearch.timeout);
+              return onSearch(e);
+            }}
           />
         </div>
     </div>
@@ -24,8 +36,7 @@ const Search = ({ books, showShelfs, handelShelfChange, handelSearch }) => {
           <Book
           key={book.id}
           book={book}
-          showShelfs={showShelfs}
-          showShelf={book.shelf}
+          showShelves={showShelves}
           handelShelfChange={handelShelfChange}
         />
       

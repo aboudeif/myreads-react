@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Shelf from "./components/Shelf";
 
 function App() {
-  const showShelfs = ["currentlyReading", "wantToRead", "read"];
+  const showShelves = ["currentlyReading", "wantToRead", "read"];
 
   const [bookShelf, setBookShelf] = useState({'book':'', 'shelf':''});
   const [query, setQuery] = useState("");
@@ -18,6 +18,14 @@ function App() {
 
   const handelShelfChange = (book, shelf) => 
     setBookShelf({'book':book, 'shelf':shelf});
+
+  const booksWithShelf = (givenBooks,books) => {
+    return givenBooks.map((givenBook) => {
+      const bookInShelf = books.find((book) => book.id === givenBook.id);
+      givenBook.shelf = bookInShelf ? bookInShelf.shelf : "none";
+      return givenBook;
+    })
+  };
 
 
   useEffect(() => 
@@ -35,14 +43,14 @@ function App() {
   }, [bookShelf]);
  
   useEffect(() => {
-    return setTimeout(() => {
+    // return setTimeout(() => {
       if (!query) return setSearchResult([]);
       search(query.toString(), 20)
         .then((books) =>
           setSearchResult(Array.isArray(books) ? books : [].push(books))
         )
-        .catch((error) => console.log(error));
-    }, 500);
+        .catch((error) => console.log(error))
+    // }, 500);
   }, [query]);
 
   return (
@@ -52,8 +60,8 @@ function App() {
         element={
           <div className="search-books">
             <Search
-              books={searchResult}
-              showShelfs={showShelfs}
+              books={searchResult.length > 0 ? booksWithShelf(searchResult,books) : []}
+              showShelves={showShelves}
               handelShelfChange={handelShelfChange}
               handelSearch={handelSearch}
             />
@@ -71,19 +79,17 @@ function App() {
                 <h1>MyReads</h1>
               </div>
               <div className="list-books-content"></div>
-              {Array.isArray(books) && console.log(books)}
-              {showShelfs.map((showShelf) => (
-              
+              {showShelves.map((showShelf) => (
                 <Shelf
                   key={showShelf}
                   showShelf={showShelf}
-                  showShelfs={showShelfs}
+                  showShelves={showShelves}
                   books={(Array.isArray(books) && books.filter(book => book.shelf === showShelf).map(book => book)) || []}
                   handelShelfChange={handelShelfChange}
                 />
               ))}
             </div>
-            <Link key={'search'} to={"/search"} className="add-button">
+            <Link key={'search'} to={"/search"} className="open-search">
               Add a book
             </Link>
           </>

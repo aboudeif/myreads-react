@@ -1,10 +1,10 @@
 import React from "react";
 import Book from "./Book";
 
-const Shelf = ({ showShelfs, books, showShelf, handelShelfChange }) => {
+const Shelf = ({ showShelves, books, showShelf, handelShelfChange }) => {
   return (
     <div className="bookshelf">
-      <h2 className="bookshelf-title">{showShelf}</h2>
+      <h2 className="bookshelf-title">{showShelf.replace(/([A-Z])/g, " $1").toUpperCase()}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
         {books?.length > 0 ?
@@ -14,8 +14,7 @@ const Shelf = ({ showShelfs, books, showShelf, handelShelfChange }) => {
                   <Book
                     key={book.id}
                     book={book}
-                    showShelfs={showShelfs}
-                    showShelf={book.shelf}
+                    showShelves={showShelves}
                     handelShelfChange={handelShelfChange}
                   />
           ))}
